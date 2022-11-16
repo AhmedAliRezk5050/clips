@@ -11,9 +11,5 @@ export class ModalService {
 
   isModalVisible = () => this.visible
 
-  toggleModal = () => this.visible = !this.visible
-
-  openModal = () => this.visible = true
-
-  closeModal = () => this.visible = false
+  toggleModal = (status: boolean) => this.visible = status
 }
