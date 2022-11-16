@@ -14,7 +14,5 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.modalService.registerModal(this.modalId)
   }
-
 }

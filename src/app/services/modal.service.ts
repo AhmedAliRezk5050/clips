@@ -4,14 +4,18 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class ModalService {
-  private modals = new Map<string, boolean>()
+  private modals: string[] = []
 
   constructor() {
   }
 
-  registerModal = (id: string) => this.modals.set(id, false);
+  isModalVisible = (id: string): boolean => !!this.modals.find(m => m === id)
 
-  isModalVisible = (id: string) => this.modals.get(id)
-
-  toggleModal = (id: string, status: boolean) =>this.modals.set(id, status)
+  toggleModal = (id: string, status: boolean) => {
+    if (status) {
+      this.modals.push(id)
+    } else {
+      this.modals = this.modals.filter(m => m !== id);
+    }
+  }
 }
