@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {ModalService} from "../../services/modal.service";
 
 @Component({
@@ -9,8 +9,8 @@ import {ModalService} from "../../services/modal.service";
 export class ModalComponent implements OnInit {
   @Input() modalId!: string
 
-  constructor(public modalService: ModalService) {
-
+  constructor(public modalService: ModalService, public elementRef: ElementRef) {
+    document.body.appendChild(elementRef.nativeElement)
   }
 
   ngOnInit(): void {
