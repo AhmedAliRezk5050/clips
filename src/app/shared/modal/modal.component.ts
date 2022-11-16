@@ -11,7 +11,6 @@ export class ModalComponent implements OnInit {
   constructor(public modalService: ModalService) { }
 
   ngOnInit(): void {
-    console.log(this.modalService.visible)
   }
 
 }
