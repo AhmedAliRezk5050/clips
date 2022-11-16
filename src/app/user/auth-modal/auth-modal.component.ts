@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-auth-modal',
@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth-modal.component.css']
 })
 export class AuthModalComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
   }
-
 }

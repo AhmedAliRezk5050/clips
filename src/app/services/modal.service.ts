@@ -4,12 +4,14 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class ModalService {
-  private visible = false;
+  private modals = new Map<string, boolean>()
 
   constructor() {
   }
 
-  isModalVisible = () => this.visible
+  registerModal = (id: string) => this.modals.set(id, false);
 
-  toggleModal = (status: boolean) => this.visible = status
+  isModalVisible = (id: string) => this.modals.get(id)
+
+  toggleModal = (id: string, status: boolean) =>this.modals.set(id, status)
 }
