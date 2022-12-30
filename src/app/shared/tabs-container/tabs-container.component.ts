@@ -15,10 +15,15 @@ export class TabsContainerComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.tabs?.forEach(tab => {
-      console.log(tab)
-      debugger;
-    })
+    if(this.tabs) {
+       this.tabs.first.active = true;
+    }
   }
 
+  selectTab(tabTitle: string) {
+    this.tabs?.forEach(tab => {
+      tab.active = tab.tabTitle === tabTitle;
+    })
+    return false;
+  }
 }

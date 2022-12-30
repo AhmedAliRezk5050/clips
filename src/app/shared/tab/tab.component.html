@@ -1,1 +1,3 @@
-<ng-content></ng-content>
+<div [ngClass]="{'hidden': !active}">
+  <ng-content></ng-content>
+</div>
