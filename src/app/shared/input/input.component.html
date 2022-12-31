@@ -1,0 +1,17 @@
+<div class="mb-3">
+  <label class="inline-block mb-2">Name</label>
+  <input
+    type="text"
+    class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+    placeholder="Enter Name"
+    [formControl]="inputFormControl"
+    required
+  />
+  <ng-container  *ngIf="inputFormControl.invalid && (inputFormControl.dirty || inputFormControl.touched)">
+    <p *ngIf="inputFormControl.errors!['required']" class="text-red-400">Name is required.</p>
+    <p *ngIf="inputFormControl.errors!['minlength']" class="text-red-400">
+      Name must be at least {{inputFormControl.errors!['minlength']['requiredLength']}}  characters long
+     but {{inputFormControl.errors!['minlength']['actualLength']}} entered
+    </p>
+  </ng-container>
+</div>

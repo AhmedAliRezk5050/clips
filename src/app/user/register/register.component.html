@@ -1,20 +1,7 @@
 <!-- Registration Form -->
 <form [formGroup]="registerForm">
   <!-- Name -->
-  <div class="mb-3">
-    <label class="inline-block mb-2">Name</label>
-    <input
-      type="text"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      placeholder="Enter Name"
-      formControlName="name"
-      required
-    />
-    <div class="text-red-400" *ngIf="name.invalid && (name.dirty || name.touched)">
-      <div *ngIf="name.errors!['required']">Name is required.</div>
-      <div *ngIf="name.errors!['minlength']">Name must be at least 3 characters long.</div>
-    </div>
-  </div>
+  <app-input [inputFormControl]="name"></app-input>
   <!-- Email -->
   <div class="mb-3">
     <label class="inline-block mb-2">Email</label>
