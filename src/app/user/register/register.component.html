@@ -1,5 +1,5 @@
 <!-- Registration Form -->
-<form>
+<form [formGroup]="registerForm">
   <!-- Name -->
   <div class="mb-3">
     <label class="inline-block mb-2">Name</label>
@@ -7,6 +7,7 @@
       type="text"
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Enter Name"
+      formControlName="name"
     />
   </div>
   <!-- Email -->
@@ -16,6 +17,7 @@
       type="email"
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Enter Email"
+      formControlName="email"
     />
   </div>
   <!-- Age -->
@@ -23,7 +25,11 @@
     <label class="inline-block mb-2">Age</label>
     <input
       type="number"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      class="block w-full py-1.5 px-3
+      text-gray-200 border border-gray-400
+       transition duration-500
+       focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      formControlName="age"
     />
   </div>
   <!-- Password -->
@@ -33,6 +39,7 @@
       type="password"
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Password"
+      formControlName="password"
     />
   </div>
   <!-- Confirm Password -->
@@ -42,6 +49,7 @@
       type="password"
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Confirm Password"
+      formControlName="confirmPassword"
     />
   </div>
   <!-- Phone Number -->
@@ -51,6 +59,7 @@
       type="text"
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Enter Phone Number"
+      formControlName="phoneNumber"
     />
   </div>
   <button
