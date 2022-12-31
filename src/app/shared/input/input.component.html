@@ -1,17 +1,30 @@
 <div class="mb-3">
-  <label class="inline-block mb-2">Name</label>
+  <label class="inline-block mb-2">{{name|titlecase}}</label>
   <input
-    type="text"
+    [name]="name"
+    [type]="type"
     class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-    placeholder="Enter Name"
+    [placeholder]="placeholder"
     [formControl]="inputFormControl"
-    required
   />
   <ng-container  *ngIf="inputFormControl.invalid && (inputFormControl.dirty || inputFormControl.touched)">
-    <p *ngIf="inputFormControl.errors!['required']" class="text-red-400">Name is required.</p>
+    <p *ngIf="inputFormControl.errors!['required']" class="text-red-400">{{name|titlecase}} is required.</p>
     <p *ngIf="inputFormControl.errors!['minlength']" class="text-red-400">
-      Name must be at least {{inputFormControl.errors!['minlength']['requiredLength']}}  characters long
+      {{name|titlecase}} must be at least {{inputFormControl.errors!['minlength']['requiredLength']}}  characters long
      but {{inputFormControl.errors!['minlength']['actualLength']}} entered
+    </p>
+    <p *ngIf="inputFormControl.errors!['email']" class="text-red-400">
+      Please enter a valid email address
+    </p>
+    <p *ngIf="inputFormControl.errors!['min']" class="text-red-400">
+      Age must not be less than {{inputFormControl.errors!['min']['min']}}
+      but
+      {{inputFormControl.errors!['min']['actual']}} is entered
+    </p>
+    <p *ngIf="inputFormControl.errors!['max']" class="text-red-400">
+      Age must not be greater than {{inputFormControl.errors!['max']['max']}}
+      but
+      {{inputFormControl.errors!['max']['actual']}} is entered
     </p>
   </ng-container>
 </div>

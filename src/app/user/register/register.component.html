@@ -1,29 +1,12 @@
 <!-- Registration Form -->
 <form [formGroup]="registerForm">
   <!-- Name -->
-  <app-input [inputFormControl]="name"></app-input>
+  <app-input [inputFormControl]="name" placeholder="Enter Name" name="name"></app-input>
   <!-- Email -->
-  <div class="mb-3">
-    <label class="inline-block mb-2">Email</label>
-    <input
-      type="email"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      placeholder="Enter Email"
-      formControlName="email"
-    />
-  </div>
+  <app-input [inputFormControl]="email" placeholder="Enter Email" name="email" type="email"></app-input>
+
   <!-- Age -->
-  <div class="mb-3">
-    <label class="inline-block mb-2">Age</label>
-    <input
-      type="number"
-      class="block w-full py-1.5 px-3
-      text-gray-200 border border-gray-400
-       transition duration-500
-       focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      formControlName="age"
-    />
-  </div>
+  <app-input [inputFormControl]="age" placeholder="Enter Age" name="age" type="number"></app-input>
   <!-- Password -->
   <div class="mb-3">
     <label class="inline-block mb-2">Password</label>
