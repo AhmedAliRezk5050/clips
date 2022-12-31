@@ -8,7 +8,7 @@
     [formControl]="inputFormControl"
   />
   <ng-container  *ngIf="inputFormControl.invalid && (inputFormControl.dirty || inputFormControl.touched)">
-    <p *ngIf="inputFormControl.errors!['required']" class="text-red-400">{{name|titlecase}} is required.</p>
+    <p *ngIf="inputFormControl.errors!['required']" class="text-red-400">{{label}} is required.</p>
     <p *ngIf="inputFormControl.errors!['minlength']" class="text-red-400">
       {{label}} must be at least {{inputFormControl.errors!['minlength']['requiredLength']}}  characters long
      but {{inputFormControl.errors!['minlength']['actualLength']}} entered
