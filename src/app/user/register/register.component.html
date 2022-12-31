@@ -1,5 +1,5 @@
 <!-- Registration Form -->
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" (ngSubmit)="register()">
   <!-- Name -->
   <app-input [inputFormControl]="name" placeholder="Enter Name" name="name" label="Name"></app-input>
   <!-- Email -->

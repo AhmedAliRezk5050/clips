@@ -39,4 +39,7 @@ export class RegisterComponent {
     phoneNumber: this.phoneNumber,
   })
 
+  register() {
+    console.log(this.registerForm)
+  }
 }
