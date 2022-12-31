@@ -38,8 +38,14 @@ export class RegisterComponent {
     confirmPassword: this.confirmPassword,
     phoneNumber: this.phoneNumber,
   })
+  alertColor = '';
+  alertMsg = '';
+  alertShown = false;
 
   register() {
     console.log(this.registerForm)
+    this.alertShown = true;
+    this.alertMsg = 'Please wait, your account is being created.';
+    this.alertColor = 'blue';
   }
 }
