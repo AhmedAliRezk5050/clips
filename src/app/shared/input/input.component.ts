@@ -11,13 +11,14 @@ export class InputComponent implements OnInit {
   @Input() inputFormControl = new FormControl();
   @Input() type = 'text'
   @Input() placeholder = ''
-   @Input() name = ''
+  @Input() name = ''
+  @Input() label = ''
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
 
 
 }

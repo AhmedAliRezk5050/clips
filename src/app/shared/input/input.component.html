@@ -1,5 +1,5 @@
 <div class="mb-3">
-  <label class="inline-block mb-2">{{name|titlecase}}</label>
+  <label class="inline-block mb-2">{{label}}</label>
   <input
     [name]="name"
     [type]="type"
@@ -10,7 +10,7 @@
   <ng-container  *ngIf="inputFormControl.invalid && (inputFormControl.dirty || inputFormControl.touched)">
     <p *ngIf="inputFormControl.errors!['required']" class="text-red-400">{{name|titlecase}} is required.</p>
     <p *ngIf="inputFormControl.errors!['minlength']" class="text-red-400">
-      {{name|titlecase}} must be at least {{inputFormControl.errors!['minlength']['requiredLength']}}  characters long
+      {{label}} must be at least {{inputFormControl.errors!['minlength']['requiredLength']}}  characters long
      but {{inputFormControl.errors!['minlength']['actualLength']}} entered
     </p>
     <p *ngIf="inputFormControl.errors!['email']" class="text-red-400">
@@ -25,6 +25,9 @@
       Age must not be greater than {{inputFormControl.errors!['max']['max']}}
       but
       {{inputFormControl.errors!['max']['actual']}} is entered
+    </p>
+    <p *ngIf="inputFormControl.errors!['pattern']" class="text-red-400">
+      Password at least 8 characters, must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
     </p>
   </ng-container>
 </div>

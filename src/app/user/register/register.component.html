@@ -1,32 +1,16 @@
 <!-- Registration Form -->
 <form [formGroup]="registerForm">
   <!-- Name -->
-  <app-input [inputFormControl]="name" placeholder="Enter Name" name="name"></app-input>
+  <app-input [inputFormControl]="name" placeholder="Enter Name" name="name" label="Name"></app-input>
   <!-- Email -->
-  <app-input [inputFormControl]="email" placeholder="Enter Email" name="email" type="email"></app-input>
+  <app-input [inputFormControl]="email" placeholder="Enter Email" name="email" type="email" label="Email"></app-input>
 
   <!-- Age -->
-  <app-input [inputFormControl]="age" placeholder="Enter Age" name="age" type="number"></app-input>
+  <app-input [inputFormControl]="age" placeholder="Enter Age" name="age" type="number" label="Age"></app-input>
   <!-- Password -->
-  <div class="mb-3">
-    <label class="inline-block mb-2">Password</label>
-    <input
-      type="password"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      placeholder="Password"
-      formControlName="password"
-    />
-  </div>
+  <app-input [inputFormControl]="password" placeholder="Enter Password" name="password" type="password" label="Password"></app-input>
   <!-- Confirm Password -->
-  <div class="mb-3">
-    <label class="inline-block mb-2">Confirm Password</label>
-    <input
-      type="password"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      placeholder="Confirm Password"
-      formControlName="confirmPassword"
-    />
-  </div>
+  <app-input [inputFormControl]="confirmPassword" placeholder="Confirm Password" name="confirmPassword" type="password" label="Confirm Password"></app-input>
   <!-- Phone Number -->
   <div class="mb-3">
     <label class="inline-block mb-2">Phone Number</label>
