@@ -18,12 +18,20 @@ export class FirebaseAuthService {
     const {email, password, name, age, phoneNumber} = user;
     const credentials = await this.auth.createUserWithEmailAndPassword(email, password)
 
-    await this.usersCollection.add({
+    if(!credentials.user) {
+      throw new Error("User not found")
+    }
+
+    await this.usersCollection.doc(credentials.user.uid).set({
       name,
       email,
       age,
       phoneNumber
     });
+
+    await credentials.user.updateProfile({
+      displayName: name
+    })
   }
 
 
