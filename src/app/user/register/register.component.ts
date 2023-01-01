@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {FirebaseAuthService} from "../../services/auth/firebase-auth.service";
+import IUser from "../../models/user.model";
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 export class RegisterComponent {
   submitBtnDisabled = false;
 
-  constructor(private auth: AngularFireAuth, private db: AngularFirestore) {
+  constructor(private firebaseAuth: FirebaseAuthService) {
   }
 
   name = new FormControl('', [
@@ -22,7 +24,7 @@ export class RegisterComponent {
     Validators.required,
     Validators.email
   ]);
-  age = new FormControl('', [
+  age = new FormControl<number | null>(null, [
     Validators.required,
     Validators.min(18),
     Validators.max(120)
@@ -55,17 +57,9 @@ export class RegisterComponent {
     this.alertMsg = 'Please wait, your account is being created.';
     this.alertColor = 'blue';
     try {
-      const {email, password, name, age, phoneNumber} = this.registerForm.value;
-      const credentials = await this.auth.createUserWithEmailAndPassword(email!, password!)
+      await this.firebaseAuth.createUser(this.registerForm.value as IUser);
       this.alertColor = 'green';
       this.alertMsg = 'Success!';
-      await this.db.collection('users').add({
-        name,
-        email,
-        age,
-        phoneNumber
-      });
-      console.log(credentials);
     } catch (e: any) {
       console.error(e);
       this.alertColor = 'red';
