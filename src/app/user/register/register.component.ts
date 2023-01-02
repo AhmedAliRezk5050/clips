@@ -48,7 +48,7 @@ export class RegisterComponent {
     password: this.password,
     confirmPassword: this.confirmPassword,
     phoneNumber: this.phoneNumber,
-  }, [RegisterValidators.match])
+  }, [RegisterValidators.match('password', 'confirmPassword')])
   alertColor = '';
   alertMsg = '';
   alertShown = false;
