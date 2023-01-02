@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalService} from "../services/modal.service";
 import {FirebaseAuthService} from "../services/auth/firebase-auth.service";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-nav',
@@ -12,6 +13,7 @@ export class NavComponent implements OnInit {
   constructor(public modalService: ModalService, public firebaseAuth: FirebaseAuthService) { }
 
   ngOnInit(): void {
+    this.firebaseAuth.isAuthenticated$.subscribe(console.log)
   }
 
   startAuth(event: MouseEvent) {

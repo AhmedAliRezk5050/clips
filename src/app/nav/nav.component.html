@@ -11,22 +11,20 @@
       <!-- Primary Navigation -->
       <ul class="flex flex-row mt-1">
         <!-- Navigation Links -->
-        <ng-container *ngIf="firebaseAuth.isAuthenticated$ | async as authStatus">
-          <li *ngIf="!authStatus">
-            <a class="px-2" href="#" (click)="startAuth($event)">Login / Register</a>
+        <li *ngIf="!(firebaseAuth.isAuthenticated$ | async); else authLinks;">
+          <a class="px-2" href="#" (click)="startAuth($event)">Login / Register</a>
+        </li>
+      <ng-template #authLinks>
+          <li>
+            <a class="px-2" href="#">Manage</a>
           </li>
-          <ng-container *ngIf="authStatus">
-            <li>
-              <a class="px-2" href="#">Manage</a>
-            </li>
-            <li>
-              <a class="px-2" href="#">Upload</a>
-            </li>
-            <li>
-              <a class="px-2" href="about.html">About</a>
-            </li>
-          </ng-container>
-        </ng-container>
+          <li>
+            <a class="px-2" href="#">Upload</a>
+          </li>
+          <li>
+            <a class="px-2" href="about.html">About</a>
+          </li>
+      </ng-template>
 
         <ng-template #authLinks>
 
