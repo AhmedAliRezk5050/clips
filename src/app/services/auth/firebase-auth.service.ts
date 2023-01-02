@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import IUser from "../../models/user.model";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
@@ -23,7 +23,7 @@ export class FirebaseAuthService {
     const {email, password, name, age, phoneNumber} = user;
     const credentials = await this.auth.createUserWithEmailAndPassword(email, password)
 
-    if(!credentials.user) {
+    if (!credentials.user) {
       throw new Error("User not found")
     }
 
