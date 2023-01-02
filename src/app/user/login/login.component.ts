@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(private  firebaseAuth: FirebaseAuthService, private modalService: ModalService) {
+  constructor(private firebaseAuth: FirebaseAuthService, private modalService: ModalService) {
   }
 
   ngOnInit(): void {
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   alertMsg = '';
   alertShown = false;
   submitBtnDisabled = false;
+
   async login() {
     this.submitBtnDisabled = true;
     try {
@@ -37,11 +38,13 @@ export class LoginComponent implements OnInit {
       this.alertColor = 'green';
       this.alertMsg = 'Success!';
 
-      this.modalService.toggleModal('auth', false)
+      setTimeout(() => {
+        this.modalService.toggleModal('auth', false)
+      }, 1000);
     } catch (e: any) {
       this.alertMsg = 'Invalid credentials.';
       this.alertColor = 'red';
+      this.submitBtnDisabled = false;
     }
-    this.submitBtnDisabled = false;
   }
 }

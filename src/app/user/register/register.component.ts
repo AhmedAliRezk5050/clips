@@ -63,11 +63,17 @@ export class RegisterComponent {
       this.alertMsg = 'Success!';
 
       this.modalService.toggleModal('auth', false)
+
+      setTimeout(() => {
+        this.modalService.toggleModal('auth', false)
+      }, 1000);
+
     } catch (e: any) {
       console.error(e);
       this.alertColor = 'red';
       this.alertMsg = 'Registering failed, try again later';
+      this.submitBtnDisabled = false;
     }
-    this.submitBtnDisabled = false;
+
   }
 }

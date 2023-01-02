@@ -261,6 +261,6 @@
       </div>
     </a>
   </div>
-  <app-auth-modal *ngIf="!(firebaseAuth.isAuthenticated$ | async)"></app-auth-modal>
+  <app-auth-modal *ngIf="!(isAuthenticatedWithDelay$ | async)"></app-auth-modal>
 </section>
 
