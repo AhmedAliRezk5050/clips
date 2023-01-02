@@ -14,7 +14,7 @@
         <li *ngIf="!(firebaseAuth.isAuthenticated$ | async); else authLinks;">
           <a class="px-2" href="#" (click)="startAuth($event)">Login / Register</a>
         </li>
-      <ng-template #authLinks>
+        <ng-template #authLinks>
           <li>
             <a class="px-2" href="#">Manage</a>
           </li>
@@ -22,9 +22,9 @@
             <a class="px-2" href="#">Upload</a>
           </li>
           <li>
-            <a class="px-2" href="about.html">About</a>
           </li>
-      </ng-template>
+        </ng-template>
+        <a class="px-2" href="about.html">About</a>
 
         <ng-template #authLinks>
 
