@@ -5,6 +5,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {FirebaseAuthService} from "../../services/auth/firebase-auth.service";
 import IUser from "../../models/user.model";
 import {ModalService} from "../../services/modal.service";
+import {RegisterValidators} from "../validators/register-validators";
 
 @Component({
   selector: 'app-register',
@@ -47,7 +48,7 @@ export class RegisterComponent {
     password: this.password,
     confirmPassword: this.confirmPassword,
     phoneNumber: this.phoneNumber,
-  })
+  }, [RegisterValidators.match])
   alertColor = '';
   alertMsg = '';
   alertShown = false;
