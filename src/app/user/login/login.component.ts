@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {FirebaseAuthService} from "../../services/auth/firebase-auth.service";
+import {ModalService} from "../../services/modal.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(private  firebaseAuth: FirebaseAuthService) {
+  constructor(private  firebaseAuth: FirebaseAuthService, private modalService: ModalService) {
   }
 
   ngOnInit(): void {
@@ -35,6 +36,8 @@ export class LoginComponent implements OnInit {
 
       this.alertColor = 'green';
       this.alertMsg = 'Success!';
+
+      this.modalService.toggleModal('auth', false)
     } catch (e: any) {
       this.alertMsg = 'Invalid credentials.';
       this.alertColor = 'red';

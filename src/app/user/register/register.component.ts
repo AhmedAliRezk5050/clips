@@ -4,6 +4,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {FirebaseAuthService} from "../../services/auth/firebase-auth.service";
 import IUser from "../../models/user.model";
+import {ModalService} from "../../services/modal.service";
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ import IUser from "../../models/user.model";
 export class RegisterComponent {
   submitBtnDisabled = false;
 
-  constructor(private firebaseAuth: FirebaseAuthService) {
+  constructor(private firebaseAuth: FirebaseAuthService,  private modalService: ModalService) {
   }
 
   name = new FormControl('', [
@@ -60,6 +61,8 @@ export class RegisterComponent {
       await this.firebaseAuth.createUser(this.registerForm.value as IUser);
       this.alertColor = 'green';
       this.alertMsg = 'Success!';
+
+      this.modalService.toggleModal('auth', false)
     } catch (e: any) {
       console.error(e);
       this.alertColor = 'red';
