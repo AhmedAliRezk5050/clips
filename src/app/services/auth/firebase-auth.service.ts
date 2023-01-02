@@ -39,5 +39,7 @@ export class FirebaseAuthService {
     })
   }
 
-
+  public async login(email: string, password: string) {
+    await this.auth.signInWithEmailAndPassword(email, password)
+  }
 }

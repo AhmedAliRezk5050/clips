@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {FirebaseAuthService} from "../../services/auth/firebase-auth.service";
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,31 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor() {
+  constructor(private  firebaseAuth: FirebaseAuthService) {
   }
 
   ngOnInit(): void {
   }
 
+  alertColor = '';
+  alertMsg = '';
+  alertShown = false;
+  submitBtnDisabled = false;
+  async login() {
+    this.submitBtnDisabled = true;
+    try {
+      this.alertShown = true;
+      this.alertMsg = 'Please wait, you are being logged in.';
+      this.alertColor = 'blue';
 
-  login() {
-    console.log(this.credentials)
+      await this.firebaseAuth.login(this.credentials.email, this.credentials.password)
+
+      this.alertColor = 'green';
+      this.alertMsg = 'Success!';
+    } catch (e: any) {
+      this.alertMsg = 'Invalid credentials.';
+      this.alertColor = 'red';
+    }
+    this.submitBtnDisabled = false;
   }
 }
