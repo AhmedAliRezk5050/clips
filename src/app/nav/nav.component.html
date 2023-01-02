@@ -21,14 +21,11 @@
           <li>
             <a class="px-2" href="#">Upload</a>
           </li>
-          <li>
+          <li >
+            <a href="#" class="px-2" (click)="logout($event)">Logout</a>
           </li>
         </ng-template>
         <a class="px-2" href="about.html">About</a>
-
-        <ng-template #authLinks>
-
-        </ng-template>
       </ul>
       <!-- Language Switcher -->
       <ul class="flex flex-row ml-auto">
@@ -56,6 +53,7 @@
             <span class="ml-1">French</span>
           </a>
         </li>
+
       </ul>
     </div>
   </nav>
