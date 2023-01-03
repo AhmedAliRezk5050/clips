@@ -29,5 +29,8 @@
     <p *ngIf="inputFormControl.errors!['pattern']" class="text-red-400">
       Password at least 8 characters, must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
     </p>
+    <p *ngIf="inputFormControl.errors!['noMatch']" class="text-red-400">
+      Passwords don't match
+    </p>
   </ng-container>
 </div>
