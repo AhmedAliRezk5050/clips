@@ -3,8 +3,8 @@ import IUser from "../../models/user.model";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import IDbUser from "../../models/db-user.model";
-import {map, Observable} from "rxjs";
-import {Router} from "@angular/router";
+import {filter, map, Observable} from "rxjs";
+import {NavigationEnd, Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,10 @@ export class FirebaseAuthService {
     this.isAuthenticated$ = this.auth.user.pipe(
       map(user => !!user)
     );
+
+    this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)
+    ).subscribe(console.log )
   }
 
   public async createUser(user: IUser) {
