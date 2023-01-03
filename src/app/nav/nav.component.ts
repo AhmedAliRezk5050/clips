@@ -17,7 +17,6 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.firebaseAuth.isAuthenticated$.subscribe(console.log)
   }
 
   startAuth(event: MouseEvent) {
