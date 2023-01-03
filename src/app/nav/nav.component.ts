@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../services/modal.service";
 import {FirebaseAuthService} from "../services/auth/firebase-auth.service";
-import {tap} from "rxjs";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav',
@@ -14,7 +12,7 @@ export class NavComponent implements OnInit {
   constructor(
     public modalService: ModalService,
     public firebaseAuth: FirebaseAuthService,
-    private router: Router
+
     ) {
   }
 
@@ -27,9 +25,5 @@ export class NavComponent implements OnInit {
     this.modalService.toggleModal('auth', true)
   }
 
-  async logout(event: MouseEvent) {
-    event.preventDefault()
-    await this.firebaseAuth.logout()
-    await this.router.navigateByUrl('/')
-  }
+
 }

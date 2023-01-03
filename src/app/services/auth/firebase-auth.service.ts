@@ -4,6 +4,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import IDbUser from "../../models/db-user.model";
 import {map, Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,11 @@ export class FirebaseAuthService {
   private usersCollection: AngularFirestoreCollection<IDbUser>
   public isAuthenticated$: Observable<boolean>
 
-  constructor(private auth: AngularFireAuth, private db: AngularFirestore) {
+  constructor(
+    private auth: AngularFireAuth,
+    private db: AngularFirestore,
+    private router: Router
+  ) {
     this.usersCollection = db.collection('users');
     this.isAuthenticated$ = this.auth.user.pipe(
       map(user => !!user)
@@ -43,7 +48,9 @@ export class FirebaseAuthService {
     await this.auth.signInWithEmailAndPassword(email, password)
   }
 
-   logout() {
-    return  this.auth.signOut()
+  async logout(event?: MouseEvent) {
+    event && event.preventDefault()
+    await this.auth.signOut();
+    await this.router.navigateByUrl('/')
   }
 }
