@@ -32,5 +32,8 @@
     <p *ngIf="inputFormControl.errors!['noMatch']" class="text-red-400">
       Passwords don't match
     </p>
+    <p *ngIf="inputFormControl.errors!['emailTaken']" class="text-red-400">
+      Email Taken
+    </p>
   </ng-container>
 </div>

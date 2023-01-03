@@ -6,6 +6,7 @@ import {FirebaseAuthService} from "../../services/auth/firebase-auth.service";
 import IUser from "../../models/user.model";
 import {ModalService} from "../../services/modal.service";
 import {RegisterValidators} from "../validators/register-validators";
+import {EmailTaken} from "../validators/email-taken";
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,11 @@ import {RegisterValidators} from "../validators/register-validators";
 export class RegisterComponent {
   submitBtnDisabled = false;
 
-  constructor(private firebaseAuth: FirebaseAuthService,  private modalService: ModalService) {
+  constructor(
+    private firebaseAuth: FirebaseAuthService,
+    private modalService: ModalService,
+    private emailTaken: EmailTaken
+    ) {
   }
 
   name = new FormControl('', [
@@ -25,7 +30,7 @@ export class RegisterComponent {
   email = new FormControl('', [
     Validators.required,
     Validators.email
-  ]);
+  ], [this.emailTaken.validate]);
   age = new FormControl<number | null>(null, [
     Validators.required,
     Validators.min(18),
