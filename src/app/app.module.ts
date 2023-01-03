@@ -11,6 +11,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import {VideoModule} from "./video/video.module";
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent, AboutComponent],
@@ -20,7 +21,8 @@ import { AboutComponent } from './about/about.component';
     UserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    VideoModule
   ],
   providers: [],
   bootstrap: [AppComponent],
