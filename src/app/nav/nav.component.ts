@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../services/modal.service";
 import {FirebaseAuthService} from "../services/auth/firebase-auth.service";
 import {tap} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +11,11 @@ import {tap} from "rxjs";
 })
 export class NavComponent implements OnInit {
 
-  constructor(public modalService: ModalService, public firebaseAuth: FirebaseAuthService) {
+  constructor(
+    public modalService: ModalService,
+    public firebaseAuth: FirebaseAuthService,
+    private router: Router
+    ) {
   }
 
   ngOnInit(): void {
@@ -25,5 +30,6 @@ export class NavComponent implements OnInit {
   async logout(event: MouseEvent) {
     event.preventDefault()
     await this.firebaseAuth.logout()
+    await this.router.navigateByUrl('/')
   }
 }
