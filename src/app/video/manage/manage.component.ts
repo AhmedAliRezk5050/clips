@@ -24,6 +24,11 @@ export class ManageComponent implements OnInit {
 
   async sort(event: Event) {
     const {value} = event.target as HTMLSelectElement
-    await this.router.navigateByUrl(`/manage?sort=${value}`);
+    await this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        sort: value
+      }
+    });
   }
 }
